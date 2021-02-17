@@ -38,38 +38,39 @@
             <select asp-for="Song.RecordLabelID" class="form-control" asp-items="ViewBag.RecordLabelID">
             </select>
             <span asp-validation-for="Song.RecordLabelID" class="text-danger"></span>
-            </form>
-    </div>
-    <div class="form-group">
-        <div class="table">
-            <table>
-                <tr>
-                    @{
-                        int cnt = 0;
-                        foreach (var gen in Model.AssignedGenreDataList)
-                        {
-                            if (cnt++ % 3 == 0)
-                            {
-                            @:</tr><tr>
+
+            <div class="form-group">
+                <div class="table">
+                    <table>
+                        <tr>
+                            @{
+                                int cnt = 0;
+                                foreach (var gen in Model.AssignedGenreDataList)
+                                {
+                                    if (cnt++ % 3 == 0)
+                                    {
+                                    @:</tr><tr>
+                                    }
+                                    @:<td>
+                                        <input type="checkbox"
+                                               name="selectedGenres"
+                                               value="@gen.GenreID"
+                                               @(Html.Raw(gen.Assigned ? "checked=\"checked\"" : "")) />
+                                         @: @gen.Name
+                                    @:</td>
+                                }
+                            @:</tr>
                             }
-                            @:<td>
-                                <input type="checkbox"
-                                       name="selectedGenres"
-                                       value="@gen.GenreID"
-                                       @(Html.Raw(gen.Assigned ? "checked=\"checked\"" : "")) />
-                                @gen.GenreID @: @gen.Name
-                            @:</td>
-                        }
-                    @:</tr>
-                    }
-                </table>
-            </div>
+                        </table>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <input type="submit" value="Save" class="btn btn-primary" />
+                </div>
+            </form>
         </div>
-        <div class="form-group">
-            <input type="submit" value="Save" class="btn btn-primary" />
-        </div>
-        </div>
-   
+    </div>
+
     <div>
         <a asp-page="./Index">Back to List</a>
     </div>

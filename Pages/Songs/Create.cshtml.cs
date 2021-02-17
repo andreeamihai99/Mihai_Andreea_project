@@ -33,7 +33,7 @@ namespace Mihai_Andreea_project.Pages.Songs
         [BindProperty]
         public Song Song { get; set; }
         public async Task<IActionResult> OnPostAsync(string[] selectedGenres)
-        {
+        {  
             var newSong = new Song();
             if (selectedGenres != null)
             {
